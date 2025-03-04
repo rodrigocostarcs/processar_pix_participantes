@@ -1,18 +1,88 @@
-# ProcessarPixParticipantes
+# ProcessarPixParticipantes - Guia de Configuração e Execução
 
-To start your Phoenix server:
+## Configuração do Ambiente MySQL no Ubuntu
 
-  * Run `mix setup` to install and setup dependencies
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+### Atualize os pacotes:
+```bash
+sudo apt update
+```
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+### Instale o MySQL Server:
+```bash
+sudo apt install mysql-server
+```
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+### Inicie e habilite o MySQL:
+```bash
+sudo systemctl start mysql
+sudo systemctl enable mysql
+```
 
-## Learn more
+### Acesse o MySQL:
+```bash
+mysql -u root -p
+```
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+### Execute os comandos dos arquivos `comandos.sql` para configurar o banco de dados.
+
+---
+
+## Instalação do Elixir e Erlang no Ubuntu
+
+### Atualize os pacotes:
+```bash
+sudo apt update
+```
+
+### Instale Erlang e Elixir:
+```bash
+sudo apt install erlang elixir
+```
+
+### Verifique a versão:
+```bash
+elixir --version
+```
+
+### Instale as ferramentas do Phoenix Framework:
+```bash
+mix archive.install hex phx_new 1.7.0
+```
+
+---
+
+## Configuração do Projeto
+
+### Clone o repositório e acesse a pasta do projeto:
+```bash
+cd processar_pix_participantes
+```
+
+### Instale as dependências:
+```bash
+mix deps.get
+```
+
+### Configure o arquivo `config/dev.exs` com as credenciais do banco de dados:
+```elixir
+username: "root",
+password: "senha",
+hostname: "localhost",
+database: "banco",
+stacktrace: true,
+show_sensitive_data_on_connection_error: true,
+pool_size: 10
+```
+
+---
+
+## Execução do Projeto
+
+### Execute o servidor Phoenix:
+```bash
+mix phx.server
+```
+
+A API estará disponível em: [http://127.0.0.1:4000](http://127.0.0.1:4000)
+
+---
