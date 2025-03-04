@@ -5,7 +5,7 @@ defmodule ProcessarPixParticipantes.ReceiverWorker do
   alias ProcessarPixParticipantes.ParticipantePixRepository
 
   # 5 minutos
-  @interval 20_00
+  @interval 300_000
 
   def start_link(_) do
     GenServer.start_link(__MODULE__, [], name: __MODULE__)

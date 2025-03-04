@@ -65,9 +65,6 @@ defmodule ProcessarPixParticipantes.ParticipantePixRepository do
     Repo.all(ParticipantePix)
   end
 
-  @doc """
-  Parse de string de data para NaiveDateTime
-  """
   defp parse_datetime(date_string) when is_binary(date_string) do
     case NaiveDateTime.from_iso8601(date_string) do
       {:ok, datetime} -> datetime

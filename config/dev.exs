@@ -66,7 +66,11 @@ config :processar_pix_participantes, ProcessarPixParticipantesWeb.Endpoint,
 config :processar_pix_participantes, dev_routes: true
 
 config :processar_pix_participantes,
-  aws_sqs_queue_url: "https://sqs.us-east-2.amazonaws.com/575108939014/envio_mensagens.fifo"
+       :api_brasil_url,
+       "https://brasilapi.com.br/api/pix/v1/participants"
+
+config :processar_pix_participantes,
+  aws_sqs_queue_url: System.get_env("AWS_SQS_QUEUE_URL")
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"

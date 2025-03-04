@@ -3,7 +3,7 @@ defmodule ProcessarPixParticipantes.BrasilAPIClient do
   Cliente para buscar participantes do PIX na BrasilAPI.
   """
 
-  @api_url "https://brasilapi.com.br/api/pix/v1/participants"
+  @api_url Application.compile_env(:processar_pix_participantes, :api_brasil_url)
 
   def fetch_participants do
     case HTTPoison.get(@api_url, [], recv_timeout: 5000) do

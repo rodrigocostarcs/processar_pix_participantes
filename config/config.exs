@@ -11,9 +11,10 @@ config :processar_pix_participantes,
   ecto_repos: [ProcessarPixParticipantes.Repo]
 
 config :ex_aws,
-  region: "us-east-2",
-  access_key_id: "#",
-  secret_access_key: "#"
+  access_key_id: System.get_env("AWS_ACCESS_KEY_ID"),
+  secret_access_key: System.get_env("AWS_SECRET_ACCESS_KEY"),
+  # definir a sua region conforme a aws
+  region: "us-east-2"
 
 config :ex_aws, :json_codec, Jason
 
