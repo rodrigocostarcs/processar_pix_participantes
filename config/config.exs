@@ -10,11 +10,21 @@ import Config
 config :processar_pix_participantes,
   ecto_repos: [ProcessarPixParticipantes.Repo]
 
+config :ex_aws,
+  region: "us-east-2",
+  access_key_id: "#",
+  secret_access_key: "#"
+
+config :ex_aws, :json_codec, Jason
+
 # Configures the endpoint
 config :processar_pix_participantes, ProcessarPixParticipantesWeb.Endpoint,
   url: [host: "localhost"],
   render_errors: [
-    formats: [html: ProcessarPixParticipantesWeb.ErrorHTML, json: ProcessarPixParticipantesWeb.ErrorJSON],
+    formats: [
+      html: ProcessarPixParticipantesWeb.ErrorHTML,
+      json: ProcessarPixParticipantesWeb.ErrorJSON
+    ],
     layout: false
   ],
   pubsub_server: ProcessarPixParticipantes.PubSub,
@@ -27,7 +37,8 @@ config :processar_pix_participantes, ProcessarPixParticipantesWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :processar_pix_participantes, ProcessarPixParticipantes.Mailer, adapter: Swoosh.Adapters.Local
+config :processar_pix_participantes, ProcessarPixParticipantes.Mailer,
+  adapter: Swoosh.Adapters.Local
 
 # Configure esbuild (the version is required)
 config :esbuild,

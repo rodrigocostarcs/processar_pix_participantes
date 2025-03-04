@@ -2,7 +2,9 @@ defmodule ProcessarPixParticipantesWeb.ErrorJSONTest do
   use ProcessarPixParticipantesWeb.ConnCase, async: true
 
   test "renders 404" do
-    assert ProcessarPixParticipantesWeb.ErrorJSON.render("404.json", %{}) == %{errors: %{detail: "Not Found"}}
+    assert ProcessarPixParticipantesWeb.ErrorJSON.render("404.json", %{}) == %{
+             errors: %{detail: "Not Found"}
+           }
   end
 
   test "renders 500" do
