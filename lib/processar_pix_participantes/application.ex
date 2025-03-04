@@ -17,9 +17,11 @@ defmodule ProcessarPixParticipantes.Application do
       # Start Finch
       {Finch, name: ProcessarPixParticipantes.Finch},
       # Start the Endpoint (http/https)
-      ProcessarPixParticipantesWeb.Endpoint
+      ProcessarPixParticipantesWeb.Endpoint,
       # Start a worker by calling: ProcessarPixParticipantes.Worker.start_link(arg)
       # {ProcessarPixParticipantes.Worker, arg}
+      {ProcessarPixParticipantes.SendWorker, []},
+      {ProcessarPixParticipantes.ReceiverWorker, []}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

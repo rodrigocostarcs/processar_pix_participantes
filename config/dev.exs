@@ -3,9 +3,9 @@ import Config
 # Configure your database
 config :processar_pix_participantes, ProcessarPixParticipantes.Repo,
   username: "root",
-  password: "",
+  password: "#",
   hostname: "localhost",
-  database: "processar_pix_participantes_dev",
+  database: "#",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
@@ -64,6 +64,9 @@ config :processar_pix_participantes, ProcessarPixParticipantesWeb.Endpoint,
 
 # Enable dev routes for dashboard and mailbox
 config :processar_pix_participantes, dev_routes: true
+
+config :processar_pix_participantes,
+  aws_sqs_queue_url: "https://sqs.us-east-2.amazonaws.com/575108939014/envio_mensagens.fifo"
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
